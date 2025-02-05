@@ -63,7 +63,8 @@
 								"exec": [
 									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -78,13 +79,10 @@
 							}
 						],
 						"url": {
-							"raw": "https://192.168.2.1/api?fields=loraNetwork,lora/versions,lora/status",
+							"raw": "https://{{IpAddress}}/api?fields=loraNetwork,lora/versions,lora/status",
 							"protocol": "https",
 							"host": [
-								"192",
-								"168",
-								"2",
-								"1"
+								"{{IpAddress}}"
 							],
 							"path": [
 								"api"
@@ -383,6 +381,60 @@
 			"response": []
 		},
 		{
+			"name": "Help DHCP",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{ipAddress}}/api/help/dhcp/enabled",
+					"protocol": "https",
+					"host": [
+						"{{ipAddress}}"
+					],
+					"path": [
+						"api",
+						"help",
+						"dhcp",
+						"enabled"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Save Configuration",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://{{ipAddress}}/api/command/save_apply",
+					"protocol": "https",
+					"host": [
+						"{{ipAddress}}"
+					],
+					"path": [
+						"api",
+						"command",
+						"save_apply"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Logout of Device",
 			"request": {
 				"method": "GET",
@@ -408,15 +460,42 @@
 			"response": []
 		}
 	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
 	"variable": [
 		{
-			"key": "IpAddress",
-			"value": "192.168.2.1",
+			"key": "token",
+			"value": "",
 			"type": "default"
 		},
 		{
-			"key": "token",
-			"value": "7FC49AC8258B7D724DBF6D033E2F8D5",
+			"key": "ipAddress",
+			"value": "192.168.0.180",
+			"type": "string"
+		},
+		{
+			"key": "IpAddress",
+			"value": "",
 			"type": "default"
 		}
 	]
