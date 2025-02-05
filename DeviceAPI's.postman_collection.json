@@ -363,13 +363,10 @@
 					]
 				},
 				"url": {
-					"raw": "https://192.168.1.150/api/resetButton?token={{token}}",
+					"raw": "https://{{IpAddress}}/api/resetButton?token={{token}}",
 					"protocol": "https",
 					"host": [
-						"192",
-						"168",
-						"1",
-						"150"
+						"{{IpAddress}}"
 					],
 					"path": [
 						"api",
@@ -391,13 +388,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://192.168.1.150/api/logout?token=5758F2612867F7C4F43092D83D783AE3",
+					"raw": "http://{{IpAddress}}/api/logout?token={{token}}",
 					"protocol": "http",
 					"host": [
-						"192",
-						"168",
-						"1",
-						"150"
+						"{{IpAddress}}"
 					],
 					"path": [
 						"api",
@@ -406,7 +400,7 @@
 					"query": [
 						{
 							"key": "token",
-							"value": "5758F2612867F7C4F43092D83D783AE3"
+							"value": "{{token}}"
 						}
 					]
 				}
