@@ -1,0 +1,429 @@
+{
+	"info": {
+		"_postman_id": "50e19547-5edb-4b4c-88b5-6eaf183ab596",
+		"name": "DeviceAPI's",
+		"description": "Example requests for mPower conduit devices.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15870219"
+	},
+	"item": [
+		{
+			"name": "LoRa",
+			"item": [
+				{
+					"name": "Get Whitelist Devices",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{IpAddress}}/api/loraNetwork/whitelist/devices",
+							"protocol": "https",
+							"host": [
+								"{{IpAddress}}"
+							],
+							"path": [
+								"api",
+								"loraNetwork",
+								"whitelist",
+								"devices"
+							]
+						},
+						"description": "LoRa_Sessions"
+					},
+					"response": []
+				},
+				{
+					"name": "Get LoRa config info",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "14B744E356FF6BD3EDBD1E894B7E80B",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "https://192.168.2.1/api?fields=loraNetwork,lora/versions,lora/status",
+							"protocol": "https",
+							"host": [
+								"192",
+								"168",
+								"2",
+								"1"
+							],
+							"path": [
+								"api"
+							],
+							"query": [
+								{
+									"key": "fields",
+									"value": "loraNetwork,lora/versions,lora/status"
+								}
+							]
+						},
+						"description": "Lora"
+					},
+					"response": []
+				},
+				{
+					"name": "Enable LoRa",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"lora\":{\"enabled\": true}}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{IpAddress}}/api/loraNetwork",
+							"protocol": "https",
+							"host": [
+								"{{IpAddress}}"
+							],
+							"path": [
+								"api",
+								"loraNetwork"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Restart LoRa",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://{{IpAddress}}/api/lora/restart",
+							"protocol": "https",
+							"host": [
+								"{{IpAddress}}"
+							],
+							"path": [
+								"api",
+								"lora",
+								"restart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Configure Whitelist sensor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"deveui\":\"0F0203040506070F\",\"appeui\":\"0000000000000000\",\"appkey\":\"01020304050607080910111213141516\",\"class\":\"A\",\"device_profile_id\":\"LW102-OTA-US915\",\"network_profile_id\":\"DEFAULT-CLASS-A\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://192.168.2.1/api/loraNetwork/whitelist/devices",
+							"protocol": "https",
+							"host": [
+								"192",
+								"168",
+								"2",
+								"1"
+							],
+							"path": [
+								"api",
+								"loraNetwork",
+								"whitelist",
+								"devices"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete whitelist device",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://{{IpAddress}}/api/loraNetwork/whitelist/devices/0",
+							"protocol": "https",
+							"host": [
+								"{{IpAddress}}"
+							],
+							"path": [
+								"api",
+								"loraNetwork",
+								"whitelist",
+								"devices",
+								"0"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Login to Device",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{IpAddress}}/api/login?username=&password=",
+					"protocol": "http",
+					"host": [
+						"{{IpAddress}}"
+					],
+					"path": [
+						"api",
+						"login"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": ""
+						},
+						{
+							"key": "password",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Set Password",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n    \"username\": \"mwhite\", \r\n    \"aasID\": \"CD2CE94B53E4F15E8B20E5346FFACCD1\", \r\n    \"aasAnswer\":\"Conduit123!\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{IpAddress}}/api/command/passwd?token={{token}}",
+					"protocol": "https",
+					"host": [
+						"{{IpAddress}}"
+					],
+					"path": [
+						"api",
+						"command",
+						"passwd"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Confirm Password",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"__v\":2,\"address\":\"\",\"city\":\"\",\"country\":\"\",\"creationDate\":\"09/01/2021 14:57:28\",\"division\":\"\",\"email\":\"\",\"employeeId\":\"\",\"enabled\":true,\"firstName\":\"\",\"lastLoginDate\":\"never\",\"lastName\":\"\",\"mobilePhone\":\"\",\"name\":\"mwhite\",\"passwordChangedDate\":\"09/01/21\",\"permission\":\"administrator\",\"postalCode\":\"\",\"state\":\"\",\"title\":\"\",\"workPhone\":\"\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{IpAddress}}/api/command/password?token={{token}}",
+					"protocol": "https",
+					"host": [
+						"{{IpAddress}}"
+					],
+					"path": [
+						"api",
+						"command",
+						"password"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DHCP Info Request",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "resetToFactoryDefault",
+							"value": "false",
+							"type": "default"
+						},
+						{
+							"key": "resetToUserDefinedDefault",
+							"value": "true",
+							"type": "default"
+						},
+						{
+							"key": "__v",
+							"value": "1",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://192.168.1.150/api/resetButton?token={{token}}",
+					"protocol": "https",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"150"
+					],
+					"path": [
+						"api",
+						"resetButton"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logout of Device",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://192.168.1.150/api/logout?token=5758F2612867F7C4F43092D83D783AE3",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"150"
+					],
+					"path": [
+						"api",
+						"logout"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "5758F2612867F7C4F43092D83D783AE3"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "IpAddress",
+			"value": "192.168.2.1",
+			"type": "default"
+		},
+		{
+			"key": "token",
+			"value": "7FC49AC8258B7D724DBF6D033E2F8D5",
+			"type": "default"
+		}
+	]
+}
