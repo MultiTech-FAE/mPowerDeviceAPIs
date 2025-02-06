@@ -362,12 +362,19 @@
 			"name": "Help DHCP",
 			"request": {
 				"auth": {
-					"type": "noauth"
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
 				},
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://{{ipAddress}}/api/help/dhcp/enabled",
+					"raw": "https://{{ipAddress}}/api/help/dhcp",
 					"protocol": "https",
 					"host": [
 						"{{ipAddress}}"
@@ -375,8 +382,7 @@
 					"path": [
 						"api",
 						"help",
-						"dhcp",
-						"enabled"
+						"dhcp"
 					]
 				}
 			},
