@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "50e19547-5edb-4b4c-88b5-6eaf183ab596",
+		"_postman_id": "fdba70e7-0ab7-4b38-854c-756ea879727d",
 		"name": "DeviceAPI's",
 		"description": "Example requests for mPower conduit devices.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
@@ -334,41 +334,19 @@
 		},
 		{
 			"name": "DHCP Info Request",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "resetToFactoryDefault",
-							"value": "false",
-							"type": "default"
-						},
-						{
-							"key": "resetToUserDefinedDefault",
-							"value": "true",
-							"type": "default"
-						},
-						{
-							"key": "__v",
-							"value": "1",
-							"type": "default"
-						}
-					]
-				},
 				"url": {
-					"raw": "https://{{IpAddress}}/api/resetButton?token={{token}}",
+					"raw": "https://{{IpAddress}}/api/dhcp/?token={{token}}",
 					"protocol": "https",
 					"host": [
 						"{{IpAddress}}"
 					],
 					"path": [
 						"api",
-						"resetButton"
+						"dhcp",
+						""
 					],
 					"query": [
 						{
